@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import java.util.*
 import org.json.JSONObject
-import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
+import android.widget.MediaController
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_quiz.*
@@ -37,11 +39,15 @@ class QuizActivity : AppCompatActivity() {
             val video = obj.getBoolean("video")
             Log.d("test", problem)
             val data = Question(
-                problem, example1, example2, example3, example4,
-                explanation, answer, video
+                i, problem, example1, example2, example3,
+                example4, explanation, answer, video
             )
             mQuizList.add(data)
         }
+        val testdata = Question(
+            966, "a", "b", "c", "d",
+            "e", "f", "g", true)
+        mQuizList.add(testdata)
 
         setContentView(R.layout.activity_quiz)
         updateQuestion()
@@ -70,6 +76,18 @@ class QuizActivity : AppCompatActivity() {
         tv_option_two.text = mQuizList[mCurrentIndex].example2
         tv_option_three.text = mQuizList[mCurrentIndex].example3
         tv_option_four.text = mQuizList[mCurrentIndex].example4
+        if (mQuizList[mCurrentIndex].video) {
+            val videoPath = "android.resource://" + packageName + "/" + R.raw.t966
+            val uri: Uri = Uri.parse(videoPath)
+            tv_video.setVideoURI(uri)
+            tv_video.setMediaController(MediaController(this)) // 없으면 에러
+            tv_video.requestFocus() // 준비하는 과정을 미리함
+
+            tv_video.setOnPreparedListener {
+                Toast.makeText(applicationContext, "동영상 재생 준비 완료", Toast.LENGTH_SHORT).show()
+                tv_video.start() // 동영상 재개
+            }
+        }
     }
     private fun isRightAnswer(): Boolean {
         val ans = mQuizList[mCurrentIndex].answer.split(",")

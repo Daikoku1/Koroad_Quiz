@@ -1,6 +1,7 @@
 package com.example.koroad_quiz
 
 data class Question(
+    val problem_num : Int,
     val problem : String,
     val example1 : String,
     val example2 : String,

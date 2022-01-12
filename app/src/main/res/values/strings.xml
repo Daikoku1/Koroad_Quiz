@@ -1,11 +1,11 @@
 <resources>
-    // MainActivity
+    // activity_main
     <string name="app_name">Koroad_Quiz</string>
     <!--    <string name="welcome">Welcome</string>-->
     <!--    <string name="start_message">Start when you are ready</string>-->
     <string name="start_button">Start</string>
 
-    // QuizActivity
+    // activity_quiz
     <string name="action_settings">Settings</string>
     <string name="explanation_button">해설</string>
     <string name="next_button">다음</string>
@@ -18,6 +18,7 @@
     <string name="explanation_text">해설</string>
     <string name="progress_zero">0 / 10</string>
     <string name="progress_text">%1$d / %2$d</string>
+    <string name="image_contentDescription">NoImage</string>
 
     // ResultActivity
     <string name="answer_true">정답!</string>
