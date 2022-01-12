@@ -12,6 +12,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_quiz.*
+import android.util.TypedValue
+
+import android.view.ViewGroup
+
+
+
 
 class QuizActivity : AppCompatActivity() {
     private var mCurrentIndex: Int = 0
@@ -77,6 +83,16 @@ class QuizActivity : AppCompatActivity() {
         tv_option_three.text = mQuizList[mCurrentIndex].example3
         tv_option_four.text = mQuizList[mCurrentIndex].example4
         if (mQuizList[mCurrentIndex].video) {
+            val layoutParams: ViewGroup.LayoutParams = tv_video.layoutParams
+            val height =
+                TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP,
+                    200f,
+                    resources.displayMetrics
+                )
+                    .toInt()
+            layoutParams.height = height
+
             val videoPath = "android.resource://" + packageName + "/" + R.raw.t966
             val uri: Uri = Uri.parse(videoPath)
             tv_video.setVideoURI(uri)
@@ -87,6 +103,16 @@ class QuizActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "동영상 재생 준비 완료", Toast.LENGTH_SHORT).show()
                 tv_video.start() // 동영상 재개
             }
+        } else {
+            val layoutParams: ViewGroup.LayoutParams = tv_video.layoutParams
+            val height =
+                TypedValue.applyDimension(
+                    TypedValue.COMPLEX_UNIT_DIP,
+                    0f,
+                    resources.displayMetrics
+                )
+                    .toInt()
+            layoutParams.height = height
         }
     }
     private fun isRightAnswer(): Boolean {
