@@ -15,8 +15,7 @@ import kotlinx.android.synthetic.main.activity_quiz.*
 import android.util.TypedValue
 
 import android.view.ViewGroup
-
-
+import com.bumptech.glide.Glide
 
 
 class QuizActivity : AppCompatActivity() {
@@ -47,15 +46,20 @@ class QuizActivity : AppCompatActivity() {
             val image = obj.getBoolean("image")
             Log.d("test", problem)
             val data = Question(
-                i, problem, example1, example2, example3, example4,
+                i+1, problem, example1, example2, example3, example4,
                 example5, explanation, answer, video, image
             )
             mQuizList.add(data)
         }
-        val testdata = Question(
-            966, "a", "b", "c", "d",
-            "e", "f", "g", "1", video = true, image = false)
-        mQuizList.add(testdata)
+//        val testdata2 = Question(
+//            700, "a", "b", "c", "d",
+//            "e", "f", "g", "1", video = false, image = true)
+//        mQuizList.add(testdata2)
+//
+//        val testdata = Question(
+//            963, "a", "b", "c", "d",
+//            "e", "f", "g", "1", video = true, image = false)
+//        mQuizList.add(testdata)
 
         setContentView(R.layout.activity_quiz)
         updateQuestion()
@@ -66,7 +70,7 @@ class QuizActivity : AppCompatActivity() {
 
     private fun createRandomNumberList(): List<Int> {
         val quizindex = mutableListOf<Int>()
-        val range = (0..680)
+        val range = (0..996)
         while (quizindex.size < 10) {
             val randomNumber = range.random()
             if (quizindex.contains(randomNumber)) {
@@ -87,18 +91,29 @@ class QuizActivity : AppCompatActivity() {
         tv_option_five.text = mQuizList[mCurrentIndex].example5
         tv_option_five.isEnabled = mQuizList[mCurrentIndex].example5 != ""
 
-        if (mQuizList[mCurrentIndex].video) {
-            val layoutParams: ViewGroup.LayoutParams = tv_video.layoutParams
-            val height =
-                TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    200f,
-                    resources.displayMetrics
-                )
-                    .toInt()
-            layoutParams.height = height
+        val maxheight =
+            TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                200f,
+                resources.displayMetrics
+            )
+                .toInt()
+        val minheight =
+            TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                0f,
+                resources.displayMetrics
+            )
+                .toInt()
 
-            val videoPath = "android.resource://" + packageName + "/" + R.raw.t966
+        if (mQuizList[mCurrentIndex].video) {
+            val videoParams: ViewGroup.LayoutParams = tv_video.layoutParams
+            videoParams.height = maxheight
+            val imageParams: ViewGroup.LayoutParams = tv_image.layoutParams
+            imageParams.height = minheight
+
+            val quizNumber = "q" + mQuizList[mCurrentIndex].problem_num
+            val videoPath = "android.resource://$packageName/raw/$quizNumber"
             val uri: Uri = Uri.parse(videoPath)
             tv_video.setVideoURI(uri)
             tv_video.setMediaController(MediaController(this)) // 없으면 에러
@@ -108,16 +123,24 @@ class QuizActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "동영상 재생 준비 완료", Toast.LENGTH_SHORT).show()
                 tv_video.start() // 동영상 재개
             }
+        } else if (mQuizList[mCurrentIndex].image) {
+            val imageParams: ViewGroup.LayoutParams = tv_image.layoutParams
+            imageParams.height = maxheight
+            val videoParams: ViewGroup.LayoutParams = tv_video.layoutParams
+            videoParams.height = minheight
+
+//          Log.d("test", "ELIF OK")
+            val quizNumber = "q" + mQuizList[mCurrentIndex].problem_num
+            val imagePath = "android.resource://$packageName/raw/$quizNumber"
+            Glide.with(this)
+                .load(imagePath)
+                .into(tv_image)
         } else {
-            val layoutParams: ViewGroup.LayoutParams = tv_video.layoutParams
-            val height =
-                TypedValue.applyDimension(
-                    TypedValue.COMPLEX_UNIT_DIP,
-                    0f,
-                    resources.displayMetrics
-                )
-                    .toInt()
-            layoutParams.height = height
+            val videoParams: ViewGroup.LayoutParams = tv_video.layoutParams
+            videoParams.height = minheight
+            val imageParams: ViewGroup.LayoutParams = tv_image.layoutParams
+            imageParams.height = minheight
+//            tv_image.setImageDrawable(null)
         }
     }
     private fun isRightAnswer(): Boolean {
@@ -150,6 +173,7 @@ class QuizActivity : AppCompatActivity() {
         }
 
         next_button.setOnClickListener {
+            tv_image.setImageResource(0)
             val ans = mQuizList[mCurrentIndex].answer.split(",")
             val rightAnswer = ans.contains(lastSelectedAnswer)
             if (rightAnswer) {
