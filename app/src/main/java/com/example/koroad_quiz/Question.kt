@@ -7,7 +7,9 @@ data class Question(
     val example2 : String,
     val example3 : String,
     val example4 : String,
+    val example5 : String,
     val explanation : String,
     val answer : String,
-    val video : Boolean
+    val video : Boolean,
+    val image : Boolean
 )

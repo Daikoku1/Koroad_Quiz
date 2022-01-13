@@ -28,7 +28,7 @@ class QuizActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val assetManager = resources.assets
-        val inputStream= assetManager.open("quiz.json")
+        val inputStream= assetManager.open("quiz2.json")
         val jsonString = inputStream.bufferedReader().use { it.readText() }
         val jObject = JSONObject(jsonString)
         val jArray = jObject.getJSONArray("QUIZ")
@@ -40,19 +40,21 @@ class QuizActivity : AppCompatActivity() {
             val example2 = obj.getString("examples2")
             val example3 = obj.getString("examples3")
             val example4 = obj.getString("examples4")
+            val example5 = obj.getString("examples5")
             val explanation = obj.getString("explanation")
             val answer = obj.getString("answer")
             val video = obj.getBoolean("video")
+            val image = obj.getBoolean("image")
             Log.d("test", problem)
             val data = Question(
-                i, problem, example1, example2, example3,
-                example4, explanation, answer, video
+                i, problem, example1, example2, example3, example4,
+                example5, explanation, answer, video, image
             )
             mQuizList.add(data)
         }
         val testdata = Question(
             966, "a", "b", "c", "d",
-            "e", "f", "g", true)
+            "e", "f", "g", "1", video = true, image = false)
         mQuizList.add(testdata)
 
         setContentView(R.layout.activity_quiz)
@@ -82,6 +84,9 @@ class QuizActivity : AppCompatActivity() {
         tv_option_two.text = mQuizList[mCurrentIndex].example2
         tv_option_three.text = mQuizList[mCurrentIndex].example3
         tv_option_four.text = mQuizList[mCurrentIndex].example4
+        tv_option_five.text = mQuizList[mCurrentIndex].example5
+        tv_option_five.isEnabled = mQuizList[mCurrentIndex].example5 != ""
+
         if (mQuizList[mCurrentIndex].video) {
             val layoutParams: ViewGroup.LayoutParams = tv_video.layoutParams
             val height =
@@ -128,6 +133,8 @@ class QuizActivity : AppCompatActivity() {
         tv_option_three.background = ContextCompat.getDrawable(
             this, R.drawable.default_option_border_bg)
         tv_option_four.background = ContextCompat.getDrawable(
+            this, R.drawable.default_option_border_bg)
+        tv_option_five.background = ContextCompat.getDrawable(
             this, R.drawable.default_option_border_bg)
     }
 
@@ -214,6 +221,19 @@ class QuizActivity : AppCompatActivity() {
             }
             next_button.isEnabled = true
 
+        }
+
+        tv_option_five.setOnClickListener {
+            resetBackground()
+            lastSelectedAnswer = "5"
+            if (isRightAnswer()) {
+                tv_option_five.background = ContextCompat.getDrawable(
+                    this, R.drawable.correct_option_border_bg)
+            } else {
+                tv_option_five.background = ContextCompat.getDrawable(
+                    this, R.drawable.wrong_option_border_bg)
+            }
+            next_button.isEnabled = true
         }
     }
 }
