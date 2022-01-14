@@ -5,7 +5,7 @@
     xmlns:toos="http://schemas.android.com/tools"
     >
 <androidx.appcompat.widget.Toolbar
-    android:id="@+id/main_too_bar"
+    android:id="@+id/main_tool_bar"
     android:layout_height="@dimen/custom_tool_bar_height"
     android:layout_width="match_parent"
     android:background="@color/white">

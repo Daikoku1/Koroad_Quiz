@@ -10,9 +10,11 @@ import android.widget.MediaController
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_quiz.*
+import kotlinx.android.synthetic.main.custom_bar.*
 import org.json.JSONObject
 import java.util.*
 
@@ -35,7 +37,6 @@ class QuizActivity : AppCompatActivity() {
             // Set the logo to display in the 'home' section of the action bar.
             setLogo(R.drawable.gangseo_logo)
         }
-
 
         val assetManager = resources.assets
         val inputStream= assetManager.open("quiz2.json")

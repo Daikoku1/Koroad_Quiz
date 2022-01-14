@@ -12,6 +12,11 @@
         android:theme="@style/Theme.Koroad_Quiz"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".quizz"
+            android:exported="false"
+            android:label="@string/title_activity_quizz"
+            android:theme="@style/Theme.Koroad_Quiz.NoActionBar" />
+        <activity
             android:name=".ResultActivity"
             android:exported="false" />
         <activity
