@@ -1,22 +1,20 @@
 package com.example.koroad_quiz
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import java.util.*
-import org.json.JSONObject
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
+import android.view.ViewGroup
 import android.widget.MediaController
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.activity_quiz.*
-import android.util.TypedValue
-
-import android.view.ViewGroup
 import com.bumptech.glide.Glide
-
+import kotlinx.android.synthetic.main.activity_quiz.*
+import org.json.JSONObject
+import java.util.*
 
 class QuizActivity : AppCompatActivity() {
     private var mCurrentIndex: Int = 0
@@ -25,6 +23,19 @@ class QuizActivity : AppCompatActivity() {
     private val mQuizList = ArrayList<Question>(1)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.apply {
+            title = "Display Logo On ActionBar"
+            // documentation source developer.android.com
+            // Set whether to include the application home affordance in the
+            // action bar. Home is presented as either an activity icon or logo.
+            setDisplayShowHomeEnabled(true)
+            // Set whether to display the activity logo rather than the
+            // activity icon. A logo is often a wider, more detailed image.
+            setDisplayUseLogoEnabled(true)
+            // Set the logo to display in the 'home' section of the action bar.
+            setLogo(R.drawable.gangseo_logo)
+        }
+
 
         val assetManager = resources.assets
         val inputStream= assetManager.open("quiz2.json")

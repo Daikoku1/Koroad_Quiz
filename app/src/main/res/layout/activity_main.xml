@@ -62,12 +62,12 @@
 
     <Button
         android:id="@+id/btn_start"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/custom_button"
         android:text="@string/start_button"
-        android:textColor="@color/colorMain"
+        android:textColor="@color/black"
         android:textSize="18sp" />
 
 

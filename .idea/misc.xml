@@ -4,10 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/drawable/correct_option_border_bg.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/drawable/custom_button.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/drawable/default_option_border_bg.xml" value="0.19375" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/drawable/left_round_button.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/drawable/lightbulb.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/drawable/navigate_next.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/drawable/right_round_button.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_quiz.xml" value="0.1" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_result.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_result.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/custom_bar.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/explanation_popup.xml" value="0.16458333333333333" />
       </map>
     </option>
