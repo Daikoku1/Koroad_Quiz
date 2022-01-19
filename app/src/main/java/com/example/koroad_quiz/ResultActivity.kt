@@ -11,6 +11,20 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
+        supportActionBar?.apply {
+            title = "Display Logo On ActionBar"
+            // documentation source developer.android.com
+            // Set whether to include the application home affordance in the
+            // action bar. Home is presented as either an activity icon or logo.
+            setDisplayShowHomeEnabled(true)
+            // Set whether to display the activity logo rather than the
+            // activity icon. A logo is often a wider, more detailed image.
+            setDisplayUseLogoEnabled(true)
+            // Set the logo to display in the 'home' section of the action bar.
+            setLogo(R.drawable.gangseo_logo)
+        }
+
+
         val mockScore = intent.getIntExtra("answer", 0)
         if (mockScore >= 60) {
             score.text = getString(R.string.show_score_pass, mockScore)

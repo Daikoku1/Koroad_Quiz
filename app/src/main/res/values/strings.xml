@@ -10,11 +10,11 @@
     <string name="explanation_button">해설</string>
     <string name="next_button">다음</string>
     <string name="question_text">문제</string>
-    <string name="example1_text"> </string>
-    <string name="example2_text"> </string>
-    <string name="example3_text"> </string>
-    <string name="example4_text"> </string>
-    <string name="example5_text"> </string>
+    <string name="example1_text">보기1</string>
+    <string name="example2_text">보기2</string>
+    <string name="example3_text">보기3</string>
+    <string name="example4_text">보기4</string>
+    <string name="example5_text">보기5</string>
     <string name="explanation_text">해설</string>
     <string name="progress_zero">0 / 10</string>
     <string name="progress_text">%1$d / %2$d</string>
