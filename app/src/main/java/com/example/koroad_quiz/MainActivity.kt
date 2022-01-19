@@ -10,8 +10,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_start.setOnClickListener {
-            val intent = Intent(this, QuizActivity::class.java)
+        btn_normal.setOnClickListener {
+            val intent = Intent(this, NormalQuizActivity::class.java)
+            startActivity(intent)
+        }
+        btn_special.setOnClickListener {
+            val intent = Intent(this, SpecialQuizActivity::class.java)
             startActivity(intent)
         }
     }

@@ -33,7 +33,7 @@ class ResultActivity : AppCompatActivity() {
         }
 
         restart_button.setOnClickListener {
-            val intent = Intent(this, QuizActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }

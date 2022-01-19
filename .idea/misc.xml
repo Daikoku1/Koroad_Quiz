@@ -10,10 +10,12 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/drawable/lightbulb.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/drawable/navigate_next.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/drawable/right_round_button.xml" value="0.1" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_normal_quiz.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_quiz.xml" value="0.536" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_quizz.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_result.xml" value="0.264" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/activity_special_quiz.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/content_quizz.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/custom_bar.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/Koroad_Quiz/app/src/main/res/layout/explanation_popup.xml" value="0.16458333333333333" />

@@ -3,7 +3,8 @@
     <string name="app_name">Koroad_Quiz</string>
     <!--    <string name="welcome">Welcome</string>-->
     <!--    <string name="start_message">Start when you are ready</string>-->
-    <string name="start_button">Start</string>
+    <string name="start_normal">1·2종 보통</string>
+    <string name="start_special">1종대형·특수</string>
 
     // activity_quiz
     <string name="action_settings">Settings</string>

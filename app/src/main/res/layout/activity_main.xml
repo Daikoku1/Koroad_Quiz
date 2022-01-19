@@ -13,6 +13,7 @@
         android:id="@+id/tv_mock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="28dp"
         android:text="모의고사"
         android:textColor="@color/black"
@@ -33,15 +34,24 @@
         android:background="@null"/>
 
     <Button
-        android:id="@+id/btn_start"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_normal"
+        android:layout_width="90dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/custom_button"
-        android:layout_marginEnd="60dp"
-        android:text="@string/start_button"
+        android:layout_marginEnd="30dp"
+        android:text="@string/start_normal"
         android:textColor="@color/black"
-        android:textSize="18sp" />
-
+        android:textSize="15sp" />
+    <Button
+        android:id="@+id/btn_special"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_button"
+        android:layout_marginEnd="30dp"
+        android:text="@string/start_special"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
 
 </LinearLayout>

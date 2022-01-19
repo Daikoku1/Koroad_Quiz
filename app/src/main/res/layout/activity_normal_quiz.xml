@@ -4,18 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!--    <com.google.android.material.appbar.AppBarLayout-->
-<!--        android:id="@+id/tv_appbar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fitsSystemWindows="true">-->
-
-<!--        <androidx.appcompat.widget.Toolbar-->
-<!--            android:id="@+id/toolbar_etc"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="?attr/actionBarSize"/>-->
-
-<!--    </com.google.android.material.appbar.AppBarLayout>-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,17 +24,6 @@
                 android:text="@string/question_text"
                 android:textColor="#363A43"
                 android:textSize="@dimen/question_size" />
-
-            <ImageView
-                android:id="@+id/tv_image"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:contentDescription="@string/image_contentDescription"/>
-
-            <VideoView
-                android:id="@+id/tv_video"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"/>
 
             <LinearLayout
                 android:id="@+id/ll_progress_details"

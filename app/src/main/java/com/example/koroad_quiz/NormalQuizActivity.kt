@@ -1,23 +1,16 @@
 package com.example.koroad_quiz
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.util.TypedValue
-import android.view.ViewGroup
-import android.widget.MediaController
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_quiz.*
+import kotlinx.android.synthetic.main.activity_normal_quiz.*
 import org.json.JSONObject
 import java.util.*
 
-class QuizActivity : AppCompatActivity() {
+class NormalQuizActivity : AppCompatActivity() {
     private var mCurrentIndex: Int = 0
     private var mockScore : Int = 0
     private var lastSelectedAnswer : String = ""
@@ -38,7 +31,7 @@ class QuizActivity : AppCompatActivity() {
         }
 
         val assetManager = resources.assets
-        val inputStream= assetManager.open("quiz2.json")
+        val inputStream= assetManager.open("quiz.json")
         val jsonString = inputStream.bufferedReader().use { it.readText() }
         val jObject = JSONObject(jsonString)
         val jArray = jObject.getJSONArray("QUIZ")
@@ -62,22 +55,10 @@ class QuizActivity : AppCompatActivity() {
             )
             mQuizList.add(data)
         }
-
-//            963, "a", "b", "c", "d",
-//            "e", "f", "g", "1", video = true, image = false)
-//        mQuizList.add(testdata)
-//        val testdata = Question(
-
-//        val testdata2 = Question(
-//            700, "a", "b", "c", "d",
-//            "e", "f", "g", "1", video = false, image = true)
-//        mQuizList.add(testdata2)
-
-        setContentView(R.layout.activity_quiz)
+        setContentView(R.layout.activity_normal_quiz)
         updateQuestion()
         setButton()
         next_button.isEnabled = false
-
     }
 
     private fun updateQuestion() {
@@ -88,64 +69,9 @@ class QuizActivity : AppCompatActivity() {
         tv_option_four.text = mQuizList[mCurrentIndex].example4
         tv_option_five.text = mQuizList[mCurrentIndex].example5
         tv_option_five.isEnabled = mQuizList[mCurrentIndex].example5 != ""
-
-//        val maxheight =
-//            TypedValue.applyDimension(
-//                TypedValue.COMPLEX_UNIT_DIP,
-//                200f,
-//                resources.displayMetrics
-//            )
-//                .toInt()
-//        val minheight =
-//            TypedValue.applyDimension(
-//                TypedValue.COMPLEX_UNIT_DIP,
-//                0f,
-//                resources.displayMetrics
-//            )
-//                .toInt()
-
-        if (mQuizList[mCurrentIndex].video) {
-            val videoParams: ViewGroup.LayoutParams = tv_video.layoutParams
-            videoParams.height = dpToPx(this, 200f)
-            val imageParams: ViewGroup.LayoutParams = tv_image.layoutParams
-            imageParams.height = dpToPx(this, 0f)
-
-            val quizNumber = "q" + mQuizList[mCurrentIndex].problem_num
-            val videoPath = "android.resource://$packageName/raw/$quizNumber"
-            val uri: Uri = Uri.parse(videoPath)
-            tv_video.setVideoURI(uri)
-            tv_video.setMediaController(MediaController(this)) // 없으면 에러
-            tv_video.requestFocus() // 준비하는 과정을 미리함
-
-            tv_video.setOnPreparedListener {
-                Toast.makeText(applicationContext, "동영상 재생 준비 완료", Toast.LENGTH_SHORT).show()
-                tv_video.start() // 동영상 재개
-            }
-        } else if (mQuizList[mCurrentIndex].image) {
-            val imageParams: ViewGroup.LayoutParams = tv_image.layoutParams
-            imageParams.height = dpToPx(this, 200f)
-            val videoParams: ViewGroup.LayoutParams = tv_video.layoutParams
-            videoParams.height = dpToPx(this, 0f)
-
-//          Log.d("test", "ELIF OK")
-            val quizNumber = "q" + mQuizList[mCurrentIndex].problem_num
-            val imagePath = "android.resource://$packageName/raw/$quizNumber"
-            Glide.with(this)
-                .load(imagePath)
-                .into(tv_image)
-        } else {
-            val videoParams: ViewGroup.LayoutParams = tv_video.layoutParams
-            videoParams.height = dpToPx(this, 0f)
-            val imageParams: ViewGroup.LayoutParams = tv_image.layoutParams
-            imageParams.height = dpToPx(this, 0f)
-        }
     }
-    private fun dpToPx(context: Context, dp: Float): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.resources.displayMetrics).toInt()
-    }
-
     private fun isRightAnswer(): Boolean {
-        val ans = mQuizList[mCurrentIndex].answer.split(",")
+        val ans = mQuizList[mCurrentIndex].answer.split(", ")
         return ans.contains(lastSelectedAnswer)
     }
     private fun resetBackground() {
@@ -160,10 +86,9 @@ class QuizActivity : AppCompatActivity() {
         tv_option_five.background = ContextCompat.getDrawable(
             this, R.drawable.default_option_border_bg)
     }
-
     private fun createRandomNumberList(): List<Int> {
         val quizindex = mutableListOf<Int>()
-        val range = (0..996)
+        val range = (0..609)
         while (quizindex.size < 10) {
             val randomNumber = range.random()
             if (quizindex.contains(randomNumber)) {
@@ -198,7 +123,6 @@ class QuizActivity : AppCompatActivity() {
                 intent.putExtra("answer", testscore)
                 startActivity(intent)
             } else {
-                tv_image.setImageResource(0)
                 updateQuestion()
                 resetBackground()
                 next_button.isEnabled = false
