@@ -1,4 +1,4 @@
-package com.example.koroad_quiz
+package com.Koroad.koroad_quiz
 
 import org.junit.Test
 

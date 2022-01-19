@@ -12,16 +12,16 @@
         android:theme="@style/Theme.Koroad_Quiz"
         tools:ignore="AllowBackup" >
         <activity
-            android:name=".NormalQuizActivity"
+            android:name="com.Koroad.koroad_quiz.NormalQuizActivity"
             android:exported="false" />
         <activity
-            android:name=".ResultActivity"
+            android:name="com.Koroad.koroad_quiz.ResultActivity"
             android:exported="false" />
         <activity
-            android:name=".SpecialQuizActivity"
+            android:name="com.Koroad.koroad_quiz.SpecialQuizActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.Koroad.koroad_quiz.MainActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

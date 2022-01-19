@@ -1,4 +1,4 @@
-package com.example.koroad_quiz
+package com.Koroad.koroad_quiz
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.koroad_quiz.R
 import kotlinx.android.synthetic.main.activity_normal_quiz.*
 import org.json.JSONObject
 import java.util.*
@@ -76,15 +77,20 @@ class NormalQuizActivity : AppCompatActivity() {
     }
     private fun resetBackground() {
         tv_option_one.background = ContextCompat.getDrawable(
-            this, R.drawable.default_option_border_bg)
+            this, R.drawable.default_option_border_bg
+        )
         tv_option_two.background = ContextCompat.getDrawable(
-            this, R.drawable.default_option_border_bg)
+            this, R.drawable.default_option_border_bg
+        )
         tv_option_three.background = ContextCompat.getDrawable(
-            this, R.drawable.default_option_border_bg)
+            this, R.drawable.default_option_border_bg
+        )
         tv_option_four.background = ContextCompat.getDrawable(
-            this, R.drawable.default_option_border_bg)
+            this, R.drawable.default_option_border_bg
+        )
         tv_option_five.background = ContextCompat.getDrawable(
-            this, R.drawable.default_option_border_bg)
+            this, R.drawable.default_option_border_bg
+        )
     }
     private fun createRandomNumberList(): List<Int> {
         val quizindex = mutableListOf<Int>()
@@ -136,10 +142,12 @@ class NormalQuizActivity : AppCompatActivity() {
             lastSelectedAnswer = "1"
             if (isRightAnswer()) {
                 tv_option_one.background = ContextCompat.getDrawable(
-                    this, R.drawable.correct_option_border_bg)
+                    this, R.drawable.correct_option_border_bg
+                )
             } else {
                 tv_option_one.background = ContextCompat.getDrawable(
-                    this, R.drawable.wrong_option_border_bg)
+                    this, R.drawable.wrong_option_border_bg
+                )
             }
             next_button.isEnabled = true
         }
@@ -149,10 +157,12 @@ class NormalQuizActivity : AppCompatActivity() {
             lastSelectedAnswer = "2"
             if (isRightAnswer()) {
                 tv_option_two.background = ContextCompat.getDrawable(
-                    this, R.drawable.correct_option_border_bg)
+                    this, R.drawable.correct_option_border_bg
+                )
             } else {
                 tv_option_two.background = ContextCompat.getDrawable(
-                    this, R.drawable.wrong_option_border_bg)
+                    this, R.drawable.wrong_option_border_bg
+                )
             }
             next_button.isEnabled = true
         }
@@ -162,10 +172,12 @@ class NormalQuizActivity : AppCompatActivity() {
             lastSelectedAnswer = "3"
             if (isRightAnswer()) {
                 tv_option_three.background = ContextCompat.getDrawable(
-                    this, R.drawable.correct_option_border_bg)
+                    this, R.drawable.correct_option_border_bg
+                )
             } else {
                 tv_option_three.background = ContextCompat.getDrawable(
-                    this, R.drawable.wrong_option_border_bg)
+                    this, R.drawable.wrong_option_border_bg
+                )
             }
             next_button.isEnabled = true
         }
@@ -175,10 +187,12 @@ class NormalQuizActivity : AppCompatActivity() {
             lastSelectedAnswer = "4"
             if (isRightAnswer()) {
                 tv_option_four.background = ContextCompat.getDrawable(
-                    this, R.drawable.correct_option_border_bg)
+                    this, R.drawable.correct_option_border_bg
+                )
             } else {
                 tv_option_four.background = ContextCompat.getDrawable(
-                    this, R.drawable.wrong_option_border_bg)
+                    this, R.drawable.wrong_option_border_bg
+                )
             }
             next_button.isEnabled = true
 
@@ -189,10 +203,12 @@ class NormalQuizActivity : AppCompatActivity() {
             lastSelectedAnswer = "5"
             if (isRightAnswer()) {
                 tv_option_five.background = ContextCompat.getDrawable(
-                    this, R.drawable.correct_option_border_bg)
+                    this, R.drawable.correct_option_border_bg
+                )
             } else {
                 tv_option_five.background = ContextCompat.getDrawable(
-                    this, R.drawable.wrong_option_border_bg)
+                    this, R.drawable.wrong_option_border_bg
+                )
             }
             next_button.isEnabled = true
         }

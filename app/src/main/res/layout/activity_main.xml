@@ -7,7 +7,7 @@
     android:background="@drawable/main"
     android:gravity="right|center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="com.Koroad.koroad_quiz.MainActivity">
 
     <TextView
         android:id="@+id/tv_mock"

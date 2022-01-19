@@ -1,8 +1,9 @@
-package com.example.koroad_quiz
+package com.Koroad.koroad_quiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import com.example.koroad_quiz.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
