@@ -12,8 +12,9 @@
 - 이미지, 영상이 포함된 문제의 경우 해당 레이아웃의 높이를 조정하여 활성화
 
 
-<img src="https://user-images.githubusercontent.com/50973778/150240018-5dbad161-87c9-491b-983f-943661ad3e50.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/50973778/150240110-f75f1e82-b5d5-4ec1-8cb0-f61696ee88c3.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/50973778/150240089-2c848f68-4a19-4196-9652-8de9c65ff789.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/50973778/150240201-c265ade8-af28-4cb9-b56d-50c1a50f4f5a.jpg" width="200" height="400"/>
-<img src="https://user-images.githubusercontent.com/50973778/150240229-4b306989-9452-46cd-9eb0-d72f82ebf707.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/50973778/150240257-96240632-94d8-4fca-88f5-28c09a403bf3.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/50973778/150240277-9174f7e9-4895-466f-9638-f922c4ce5879.jpg" width="200" height="400"/>|
+<img src="https://user-images.githubusercontent.com/50973778/150240018-5dbad161-87c9-491b-983f-943661ad3e50.jpg" width="100" height="200"/>|<img src="https://user-images.githubusercontent.com/50973778/150240110-f75f1e82-b5d5-4ec1-8cb0-f61696ee88c3.jpg" width="100" height="200"/>|<img src="https://user-images.githubusercontent.com/50973778/150240257-96240632-94d8-4fca-88f5-28c09a403bf3.jpg" width="100" height="200"/>|<img src="https://user-images.githubusercontent.com/50973778/150240277-9174f7e9-4895-466f-9638-f922c4ce5879.jpg" width="100" height="200"/>   
+
+<img src="https://user-images.githubusercontent.com/50973778/150240089-2c848f68-4a19-4196-9652-8de9c65ff789.jpg" width="100" height="200"/>|<img src="https://user-images.githubusercontent.com/50973778/150240201-c265ade8-af28-4cb9-b56d-50c1a50f4f5a.jpg" width="100" height="200"/>|<img src="https://user-images.githubusercontent.com/50973778/150240229-4b306989-9452-46cd-9eb0-d72f82ebf707.jpg" width="100" height="200"/>
 
 ## Reference
 - https://github.com/MyStoryG/CapitalQuiz
