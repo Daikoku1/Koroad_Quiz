@@ -6,6 +6,7 @@
   - [pdftotext, re] 문제 텍스트 전처리
 
 ## 어플 소개
+<a href='https://play.google.com/store/apps/details?id=com.Koroad.koroad_quiz&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='다운로드하기 Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/ko_badge_web_generic.png' width="150"/></a>
 - 보기가 4개인 문제와 보기가 5개인 문제가 혼합되어 있으므로 상황에 따라 보기5를 논클릭 처리
 - 해설 클릭시 문제 해설을 팝업 형식으로 출력
 - 특정 보기를 선택하면 다음 문제로 넘어갈 수 있는 버튼이 활성화되며, 보기의 배경을 초록색과 빨강색으로 바꾸는 방식으로 해당 보기의 정답여부 판별
