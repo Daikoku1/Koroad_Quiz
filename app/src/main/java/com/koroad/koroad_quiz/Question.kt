@@ -1,4 +1,4 @@
-package com.Koroad.koroad_quiz
+package com.koroad.koroad_quiz
 
 data class Question(
     val problem_num : Int,

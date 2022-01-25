@@ -1,4 +1,4 @@
-package com.Koroad.koroad_quiz
+package com.koroad.koroad_quiz
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

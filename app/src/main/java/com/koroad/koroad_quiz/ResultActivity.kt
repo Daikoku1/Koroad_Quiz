@@ -1,4 +1,4 @@
-package com.Koroad.koroad_quiz
+package com.koroad.koroad_quiz
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
