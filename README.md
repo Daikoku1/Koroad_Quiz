@@ -10,6 +10,9 @@
 - 보기가 4개인 문제와 보기가 5개인 문제가 혼합되어 있으므로 상황에 따라 보기5를 논클릭 처리
 - 해설 클릭시 문제 해설을 팝업 형식으로 출력
 - 특정 보기를 선택하면 다음 문제로 넘어갈 수 있는 버튼이 활성화되며, 보기의 배경을 초록색과 빨강색으로 바꾸는 방식으로 해당 보기의 정답여부 판별
+  - Version 3.0 에서 변경
+    - 정답이 여러개인 문제를 체크하기 위해 보기를 선택시마다 보기의 selected 상태가 변경
+    - 별도의 버튼을 통해 정답여부 메세지 출력
 - 이미지, 영상이 포함된 문제의 경우 해당 레이아웃의 높이를 조정하여 활성화
 
 
@@ -20,3 +23,4 @@
 ## Reference
 - https://github.com/MyStoryG/CapitalQuiz
 - https://github.com/Solideizer/QuizApp
+- https://github.com/Spikeysanju/MotionToast
