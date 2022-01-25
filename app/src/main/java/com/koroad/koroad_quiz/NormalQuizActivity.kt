@@ -5,17 +5,19 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.example.koroad_quiz.R
 import kotlinx.android.synthetic.main.activity_normal_quiz.*
 import org.json.JSONObject
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 import java.util.*
 
 class NormalQuizActivity : AppCompatActivity() {
     private var mCurrentIndex: Int = 0
     private var mockScore : Int = 0
-    private var lastSelectedAnswer : String = ""
     private val mQuizList = ArrayList<Question>(1)
+    private var ans = emptyList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.apply {
@@ -62,36 +64,6 @@ class NormalQuizActivity : AppCompatActivity() {
         next_button.isEnabled = false
     }
 
-    private fun updateQuestion() {
-        tv_question.text = mQuizList[mCurrentIndex].problem
-        tv_option_one.text = mQuizList[mCurrentIndex].example1
-        tv_option_two.text = mQuizList[mCurrentIndex].example2
-        tv_option_three.text = mQuizList[mCurrentIndex].example3
-        tv_option_four.text = mQuizList[mCurrentIndex].example4
-        tv_option_five.text = mQuizList[mCurrentIndex].example5
-        tv_option_five.isEnabled = mQuizList[mCurrentIndex].example5 != ""
-    }
-    private fun isRightAnswer(): Boolean {
-        val ans = mQuizList[mCurrentIndex].answer.split(", ")
-        return ans.contains(lastSelectedAnswer)
-    }
-    private fun resetBackground() {
-        tv_option_one.background = ContextCompat.getDrawable(
-            this, R.drawable.default_option_border_bg
-        )
-        tv_option_two.background = ContextCompat.getDrawable(
-            this, R.drawable.default_option_border_bg
-        )
-        tv_option_three.background = ContextCompat.getDrawable(
-            this, R.drawable.default_option_border_bg
-        )
-        tv_option_four.background = ContextCompat.getDrawable(
-            this, R.drawable.default_option_border_bg
-        )
-        tv_option_five.background = ContextCompat.getDrawable(
-            this, R.drawable.default_option_border_bg
-        )
-    }
     private fun createRandomNumberList(): List<Int> {
         val quizindex = mutableListOf<Int>()
         val range = (0..609)
@@ -106,6 +78,45 @@ class NormalQuizActivity : AppCompatActivity() {
         return quizindex
     }
 
+    private fun resetExamples() {
+        tv_option_one.isSelected = false
+        tv_option_two.isSelected = false
+        tv_option_three.isSelected = false
+        tv_option_four.isSelected = false
+        tv_option_five.isSelected = false
+    }
+
+    private fun updateQuestion() {
+        tv_question.text = mQuizList[mCurrentIndex].problem
+        tv_option_one.text = mQuizList[mCurrentIndex].example1
+        tv_option_two.text = mQuizList[mCurrentIndex].example2
+        tv_option_three.text = mQuizList[mCurrentIndex].example3
+        tv_option_four.text = mQuizList[mCurrentIndex].example4
+        tv_option_five.text = mQuizList[mCurrentIndex].example5
+        tv_option_five.isEnabled = mQuizList[mCurrentIndex].example5 != ""
+        ans = mQuizList[mCurrentIndex].answer.split(", ")
+        resetExamples()
+    }
+
+    private fun isRightAnswer(): Boolean {
+        if (tv_option_one.isSelected && !ans.contains("1")){ return false }
+        if (tv_option_two.isSelected && !ans.contains("2")){ return false }
+        if (tv_option_three.isSelected && !ans.contains("3")){ return false }
+        if (tv_option_four.isSelected && !ans.contains("4")){ return false }
+        if (tv_option_five.isSelected && !ans.contains("5")){ return false }
+        return true
+    }
+
+    private fun countSelectedAnswer(): Boolean {
+        var selectedAnswer = 0
+        if (tv_option_one.isSelected){ selectedAnswer += 1 }
+        if (tv_option_two.isSelected){ selectedAnswer += 1 }
+        if (tv_option_three.isSelected){ selectedAnswer += 1 }
+        if (tv_option_four.isSelected){ selectedAnswer += 1 }
+        if (tv_option_five.isSelected){ selectedAnswer += 1 }
+        return ans.size == selectedAnswer
+    }
+
     private fun setButton() {
         explanation_button.setOnClickListener {
             val explanationText = mQuizList[mCurrentIndex].explanation
@@ -115,6 +126,28 @@ class NormalQuizActivity : AppCompatActivity() {
                 .setMessage(explanationText)
             // 다이얼로그를 띄워주기
             builder.show()
+        }
+
+        answercheck.setOnClickListener {
+            val rightAnswer = isRightAnswer()
+            if (rightAnswer) {
+                MotionToast.createColorToast(this,
+                    "정답입니다. 😍",
+                    "",
+                    MotionToastStyle.SUCCESS,
+                    MotionToast.GRAVITY_CENTER,
+                    MotionToast.SHORT_DURATION,
+                    ResourcesCompat.getFont(this,R.font.helvetica_regular))
+            } else {
+                MotionToast.createColorToast(this,
+                    "오답입니다. ☹️",
+                    "다시 풀어보세요",
+                    MotionToastStyle.ERROR,
+                    MotionToast.GRAVITY_CENTER,
+                    MotionToast.SHORT_DURATION,
+                    ResourcesCompat.getFont(this,R.font.helvetica_regular))
+                resetExamples()
+            }
         }
 
         next_button.setOnClickListener {
@@ -130,7 +163,6 @@ class NormalQuizActivity : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 updateQuestion()
-                resetBackground()
                 next_button.isEnabled = false
                 progressBar.progress = mCurrentIndex + 1
                 tv_progress.text = getString(R.string.progress_text, mCurrentIndex+1, mQuizList.size)
@@ -138,79 +170,33 @@ class NormalQuizActivity : AppCompatActivity() {
         }
 
         tv_option_one.setOnClickListener {
-            resetBackground()
-            lastSelectedAnswer = "1"
-            if (isRightAnswer()) {
-                tv_option_one.background = ContextCompat.getDrawable(
-                    this, R.drawable.correct_option_border_bg
-                )
-            } else {
-                tv_option_one.background = ContextCompat.getDrawable(
-                    this, R.drawable.wrong_option_border_bg
-                )
-            }
-            next_button.isEnabled = true
+            if (ans.size == 1) {resetExamples()}
+            tv_option_one.isSelected = tv_option_one.isSelected != true
+            next_button.isEnabled = countSelectedAnswer()
         }
 
         tv_option_two.setOnClickListener {
-            resetBackground()
-            lastSelectedAnswer = "2"
-            if (isRightAnswer()) {
-                tv_option_two.background = ContextCompat.getDrawable(
-                    this, R.drawable.correct_option_border_bg
-                )
-            } else {
-                tv_option_two.background = ContextCompat.getDrawable(
-                    this, R.drawable.wrong_option_border_bg
-                )
-            }
-            next_button.isEnabled = true
+            if (ans.size == 1) {resetExamples()}
+            tv_option_two.isSelected = tv_option_two.isSelected != true
+            next_button.isEnabled = countSelectedAnswer()
         }
 
         tv_option_three.setOnClickListener {
-            resetBackground()
-            lastSelectedAnswer = "3"
-            if (isRightAnswer()) {
-                tv_option_three.background = ContextCompat.getDrawable(
-                    this, R.drawable.correct_option_border_bg
-                )
-            } else {
-                tv_option_three.background = ContextCompat.getDrawable(
-                    this, R.drawable.wrong_option_border_bg
-                )
-            }
-            next_button.isEnabled = true
+            if (ans.size == 1) {resetExamples()}
+            tv_option_three.isSelected = tv_option_three.isSelected != true
+            next_button.isEnabled = countSelectedAnswer()
         }
 
         tv_option_four.setOnClickListener {
-            resetBackground()
-            lastSelectedAnswer = "4"
-            if (isRightAnswer()) {
-                tv_option_four.background = ContextCompat.getDrawable(
-                    this, R.drawable.correct_option_border_bg
-                )
-            } else {
-                tv_option_four.background = ContextCompat.getDrawable(
-                    this, R.drawable.wrong_option_border_bg
-                )
-            }
-            next_button.isEnabled = true
-
+            if (ans.size == 1) {resetExamples()}
+            tv_option_four.isSelected = tv_option_four.isSelected != true
+            next_button.isEnabled = countSelectedAnswer()
         }
 
         tv_option_five.setOnClickListener {
-            resetBackground()
-            lastSelectedAnswer = "5"
-            if (isRightAnswer()) {
-                tv_option_five.background = ContextCompat.getDrawable(
-                    this, R.drawable.correct_option_border_bg
-                )
-            } else {
-                tv_option_five.background = ContextCompat.getDrawable(
-                    this, R.drawable.wrong_option_border_bg
-                )
-            }
-            next_button.isEnabled = true
+            if (ans.size == 1) {resetExamples()}
+            tv_option_five.isSelected = tv_option_five.isSelected != true
+            next_button.isEnabled = countSelectedAnswer()
         }
     }
 }

@@ -69,12 +69,13 @@
 
             </LinearLayout>
 
+
             <TextView
                 android:id="@+id/tv_option_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/default_option_border_bg"
+                android:background="@drawable/button_selector"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/example_text_size"
@@ -88,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/default_option_border_bg"
+                android:background="@drawable/button_selector"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/example_text_size"
@@ -102,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/default_option_border_bg"
+                android:background="@drawable/button_selector"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/example_text_size"
@@ -116,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/default_option_border_bg"
+                android:background="@drawable/button_selector"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/example_text_size"
@@ -130,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="@drawable/default_option_border_bg"
+                android:background="@drawable/button_selector"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="@dimen/example_text_size"
@@ -139,7 +140,7 @@
                 tools:text="@string/example5_text"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingTop="20dp"
@@ -147,22 +148,31 @@
 
                 <Button
                     android:id="@+id/explanation_button"
-                    android:layout_weight="1"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="start"
-                    android:text="@string/explanation_button"
-                    android:textSize="@dimen/prev_button_text_size"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/custom_button"
+                    android:drawableStart="@drawable/lightbulb"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
-                    android:drawableStart="@drawable/lightbulb"
+                    android:text="@string/explanation_button"
+                    android:textSize="@dimen/prev_button_text_size" />
+
+                <Button
+                    android:id="@+id/answercheck"
+                    android:layout_weight="1"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:text="@string/answer_check"
+                    android:textSize="@dimen/prev_button_text_size"
+                    android:background="@drawable/custom_button"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
                     style="?android:attr/borderlessButtonStyle"/>
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
 
                 <Button
                     android:id="@+id/next_button"
@@ -170,6 +180,7 @@
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
                     android:text="@string/next_button"
                     android:textSize="@dimen/next_button_text_size"
                     android:background="@drawable/custom_button"
