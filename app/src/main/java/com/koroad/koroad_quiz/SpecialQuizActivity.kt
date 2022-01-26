@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.MediaController
-import android.widget.Toast
+//import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -45,7 +45,13 @@ class SpecialQuizActivity : AppCompatActivity() {
         val jsonString = inputStream.bufferedReader().use { it.readText() }
         val jObject = JSONObject(jsonString)
         val jArray = jObject.getJSONArray("QUIZ")
-        val testQuiz = createRandomNumberList()
+//        val testQuiz = createRandomNumberList()
+        val testQuiz = mutableListOf<Int>()
+        testQuiz.add(610)
+        testQuiz.add(996)
+        testQuiz.add(962)
+        testQuiz.add(963)
+
         for(i in testQuiz) {
             val obj = jArray.getJSONObject(i)
             val problem = obj.getString("problem")
@@ -65,11 +71,11 @@ class SpecialQuizActivity : AppCompatActivity() {
             )
             mQuizList.add(data)
         }
-
-//            963, "a", "b", "c", "d",
+//
+//        val testdata = Question(963, "a", "b", "c", "d",
 //            "e", "f", "g", "1", video = true, image = false)
 //        mQuizList.add(testdata)
-//        val testdata = Question(
+
 
 //        val testdata2 = Question(
 //            700, "a", "b", "c", "d",
@@ -79,6 +85,20 @@ class SpecialQuizActivity : AppCompatActivity() {
         updateQuestion()
         setButton()
         next_button.isEnabled = false
+    }
+
+    private fun createRandomNumberList(): List<Int> {
+        val quizindex = mutableListOf<Int>()
+        val range = (610..996)
+        while (quizindex.size < 10) {
+            val randomNumber = range.random()
+            if (quizindex.contains(randomNumber)) {
+                continue
+            }
+            quizindex.add(randomNumber)
+        }
+        quizindex.sort()
+        return quizindex
     }
 
     private fun resetExamples() {
@@ -106,17 +126,26 @@ class SpecialQuizActivity : AppCompatActivity() {
             val imageParams: ViewGroup.LayoutParams = tv_image.layoutParams
             imageParams.height = dpToPx(this, 0f)
 
-            val quizNumber = "q" + mQuizList[mCurrentIndex].problem_num
-            val videoPath = "android.resource://$packageName/raw/$quizNumber"
-            val uri: Uri = Uri.parse(videoPath)
+            val quizNumber = "q" + mQuizList[mCurrentIndex].problem_num + ".mp4"
+            val str = "https://firebasestorage.googleapis.com/v0/b/koroadquiz.appspot.com/o/$quizNumber?alt=media"
+            val uri = Uri.parse(str)
             tv_video.setVideoURI(uri)
+            tv_video.requestFocus()
             tv_video.setMediaController(MediaController(this)) // 없으면 에러
-            tv_video.requestFocus() // 준비하는 과정을 미리함
+            tv_video.start()
 
-            tv_video.setOnPreparedListener {
-                Toast.makeText(applicationContext, "동영상 재생 준비 완료", Toast.LENGTH_SHORT).show()
-                tv_video.start() // 동영상 재개
-            }
+
+//            val quizNumber = "q" + mQuizList[mCurrentIndex].problem_num
+//            val videoPath = "android.resource://$packageName/raw/$quizNumber"
+//            val uri: Uri = Uri.parse(videoPath)
+//            tv_video.setVideoURI(uri)
+//            tv_video.setMediaController(MediaController(this)) // 없으면 에러
+//            tv_video.requestFocus() // 준비하는 과정을 미리함
+//
+//            tv_video.setOnPreparedListener {
+//                Toast.makeText(applicationContext, "동영상 재생 준비 완료", Toast.LENGTH_SHORT).show()
+//                tv_video.start() // 동영상 재개
+//            }
         } else if (mQuizList[mCurrentIndex].image) {
             val imageParams: ViewGroup.LayoutParams = tv_image.layoutParams
             imageParams.height = dpToPx(this, 200f)
@@ -157,20 +186,6 @@ class SpecialQuizActivity : AppCompatActivity() {
         if (tv_option_four.isSelected){ selectedAnswer += 1 }
         if (tv_option_five.isSelected){ selectedAnswer += 1 }
         return ans.size == selectedAnswer
-    }
-
-    private fun createRandomNumberList(): List<Int> {
-        val quizindex = mutableListOf<Int>()
-        val range = (610..996)
-        while (quizindex.size < 10) {
-            val randomNumber = range.random()
-            if (quizindex.contains(randomNumber)) {
-                continue
-            }
-            quizindex.add(randomNumber)
-        }
-        quizindex.sort()
-        return quizindex
     }
 
     private fun setButton() {

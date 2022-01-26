@@ -28,4 +28,5 @@
     <string name="score">Result: 20 %</string>
     <string name="show_score_pass">%1$d 점입니다.\n 합격하였습니다.</string>
     <string name="show_score_fail">%1$d 점입니다.\n 불합격하였습니다.</string>
+    <string name="restart_button_text">다시 풀기</string>
 </resources>
