@@ -14,7 +14,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.bumptech.glide.Glide
 import com.example.koroad_quiz.R
+import kotlinx.android.synthetic.main.activity_normal_quiz.*
 import kotlinx.android.synthetic.main.activity_special_quiz.*
+import kotlinx.android.synthetic.main.activity_special_quiz.answercheck
+import kotlinx.android.synthetic.main.activity_special_quiz.explanation_button
+import kotlinx.android.synthetic.main.activity_special_quiz.next_button
+import kotlinx.android.synthetic.main.activity_special_quiz.progressBar
+import kotlinx.android.synthetic.main.activity_special_quiz.tv_option_five
+import kotlinx.android.synthetic.main.activity_special_quiz.tv_option_four
+import kotlinx.android.synthetic.main.activity_special_quiz.tv_option_one
+import kotlinx.android.synthetic.main.activity_special_quiz.tv_option_three
+import kotlinx.android.synthetic.main.activity_special_quiz.tv_option_two
+import kotlinx.android.synthetic.main.activity_special_quiz.tv_progress
+import kotlinx.android.synthetic.main.activity_special_quiz.tv_question
 import org.json.JSONObject
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
@@ -45,12 +57,12 @@ class SpecialQuizActivity : AppCompatActivity() {
         val jsonString = inputStream.bufferedReader().use { it.readText() }
         val jObject = JSONObject(jsonString)
         val jArray = jObject.getJSONArray("QUIZ")
-//        val testQuiz = createRandomNumberList()
-        val testQuiz = mutableListOf<Int>()
-        testQuiz.add(610)
-        testQuiz.add(996)
-        testQuiz.add(962)
-        testQuiz.add(963)
+        val testQuiz = createRandomNumberList()
+//        val testQuiz = mutableListOf<Int>()
+//        testQuiz.add(610)
+//        testQuiz.add(996)
+//        testQuiz.add(962)
+//        testQuiz.add(963)
 
         for(i in testQuiz) {
             val obj = jArray.getJSONObject(i)
@@ -170,11 +182,11 @@ class SpecialQuizActivity : AppCompatActivity() {
     }
 
     private fun isRightAnswer(): Boolean {
-        if (tv_option_one.isSelected && !ans.contains("1")){ return false }
-        if (tv_option_two.isSelected && !ans.contains("2")){ return false }
-        if (tv_option_three.isSelected && !ans.contains("3")){ return false }
-        if (tv_option_four.isSelected && !ans.contains("4")){ return false }
-        if (tv_option_five.isSelected && !ans.contains("5")){ return false }
+        if (ans.contains("1") && !tv_option_one.isSelected){ return false }
+        if (ans.contains("2") && !tv_option_two.isSelected){ return false }
+        if (ans.contains("3") && !tv_option_three.isSelected){ return false }
+        if (ans.contains("4") && !tv_option_four.isSelected){ return false }
+        if (ans.contains("5") && !tv_option_five.isSelected){ return false }
         return true
     }
 

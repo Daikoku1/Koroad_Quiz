@@ -99,11 +99,11 @@ class NormalQuizActivity : AppCompatActivity() {
     }
 
     private fun isRightAnswer(): Boolean {
-        if (tv_option_one.isSelected && !ans.contains("1")){ return false }
-        if (tv_option_two.isSelected && !ans.contains("2")){ return false }
-        if (tv_option_three.isSelected && !ans.contains("3")){ return false }
-        if (tv_option_four.isSelected && !ans.contains("4")){ return false }
-        if (tv_option_five.isSelected && !ans.contains("5")){ return false }
+        if (ans.contains("1") && !tv_option_one.isSelected){ return false }
+        if (ans.contains("2") && !tv_option_two.isSelected){ return false }
+        if (ans.contains("3") && !tv_option_three.isSelected){ return false }
+        if (ans.contains("4") && !tv_option_four.isSelected){ return false }
+        if (ans.contains("5") && !tv_option_five.isSelected){ return false }
         return true
     }
 
