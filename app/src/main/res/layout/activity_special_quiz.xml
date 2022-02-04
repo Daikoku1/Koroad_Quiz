@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -44,29 +45,17 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:indeterminate="false"
-                    android:max="10"
-                    android:minHeight="50dp"
-                    android:progress="0">
-                </ProgressBar>
-
-                <TextView
-                    android:id="@+id/tv_progress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:gravity="center"
-                    android:textColorHint="#7A8089"
-                    android:textSize="14sp"
-                    tools:text="0/10">
-                </TextView>
-
+                <com.loukwn.stagestepbar.StageStepBar
+                    android:id="@+id/stageStepBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:ssb_stageStepConfig="1,1,1,1,1,1,1,1,1"
+                    app:ssb_animationDuration="300"
+                    app:ssb_filledTrackColor='@color/gold'
+                    app:ssb_filledThumbColor='@color/gold'
+                    app:ssb_currentState="0,0"/>
             </LinearLayout>
 
 

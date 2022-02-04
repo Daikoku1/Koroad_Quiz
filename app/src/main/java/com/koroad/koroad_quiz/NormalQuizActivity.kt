@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import com.example.koroad_quiz.R
+import com.loukwn.stagestepbar.StageStepBar
 import kotlinx.android.synthetic.main.activity_normal_quiz.*
 import org.json.JSONObject
 import www.sanju.motiontoast.MotionToast
@@ -164,8 +165,13 @@ class NormalQuizActivity : AppCompatActivity() {
             } else {
                 updateQuestion()
                 next_button.isEnabled = false
-                progressBar.progress = mCurrentIndex + 1
-                tv_progress.text = getString(R.string.progress_text, mCurrentIndex+1, mQuizList.size)
+                val stageStepBar = findViewById<StageStepBar>(R.id.stageStepBar)
+                stageStepBar.setCurrentState(
+                    StageStepBar.State(
+                        stage = mCurrentIndex,
+                        step = 0,
+                    )
+                )
             }
         }
 
