@@ -16,9 +16,19 @@
 - 이미지, 영상이 포함된 문제의 경우 해당 레이아웃의 높이를 조정하여 활성화
 
 
-<img src="https://user-images.githubusercontent.com/50973778/150240018-5dbad161-87c9-491b-983f-943661ad3e50.jpg" width="150" height="300"/>|<img src="https://user-images.githubusercontent.com/50973778/150240110-f75f1e82-b5d5-4ec1-8cb0-f61696ee88c3.jpg" width="150" height="300"/>|<img src="https://user-images.githubusercontent.com/50973778/150240257-96240632-94d8-4fca-88f5-28c09a403bf3.jpg" width="150" height="300"/>|<img src="https://user-images.githubusercontent.com/50973778/150240277-9174f7e9-4895-466f-9638-f922c4ce5879.jpg" width="150" height="300"/>   
+### App Layout
+|시작화면|문제화면|결과화면|
+|:---:|:---:|:---:|
+<img src="https://user-images.githubusercontent.com/50973778/150240018-5dbad161-87c9-491b-983f-943661ad3e50.jpg" width="150" height="300"/>|<img src="https://user-images.githubusercontent.com/50973778/152924662-9029b994-81b4-4d3b-b2d7-9fb666b661ad.jpg" width="150" height="300"/>|<img src="https://user-images.githubusercontent.com/50973778/152924714-e8944368-44d9-4b02-8f1e-b5356c34ae0c.jpg" width="150" height="300"/>
+|해설 팝업|정답 팝업|오답 팝업|
+<img src="https://user-images.githubusercontent.com/50973778/152924937-04c90397-f1cb-4af7-b1d8-953e86116467.jpg" width="150" height="300"/>|<img src="https://user-images.githubusercontent.com/50973778/152925011-9fbe8880-c627-4aa6-ba54-fb3dd5aa1abb.jpg" width="150" height="300"/>|<img src="https://user-images.githubusercontent.com/50973778/152925077-79d32d2c-8bba-4bd2-b2c4-cfc111293e44.jpg" width="150" height="300"/>
 
-<img src="https://user-images.githubusercontent.com/50973778/150240089-2c848f68-4a19-4196-9652-8de9c65ff789.jpg" width="150" height="300"/>|<img src="https://user-images.githubusercontent.com/50973778/150240201-c265ade8-af28-4cb9-b56d-50c1a50f4f5a.jpg" width="150" height="300"/>|<img src="https://user-images.githubusercontent.com/50973778/150240229-4b306989-9452-46cd-9eb0-d72f82ebf707.jpg" width="150" height="300"/>
+### App 기능
+|화면|특징|
+|:---:|:---|
+|<img src="https://user-images.githubusercontent.com/50973778/152926939-155ac43f-4aaa-45bb-890f-0f2519ea7ee0.gif" width="150" height="300"/>|- 보기 체크시 다음 문제 버튼 활성화</br>- 사용자 편의성을 높이기 위해 다른 보기 선택시 이전 선택보기 상태 변경</br>- 정답체크 기능, 힌트 보기 가능</br>- 문제 아래 부분의 진행바를 통해 현재 진행도 확인 가능|
+|<img src="https://user-images.githubusercontent.com/50973778/152927501-f0b55295-e5ff-40f6-bf97-5b1f80cc6637.gif" width="150" height="300"/>|- 보기 2개 체크시 다음 문제 버튼 활성화</br>- 정답체크 기능, 힌트 보기 가능</br>- 문제 아래 부분의 진행바를 통해 현재 진행도 확인 가능|
+
 
 ## Reference
 - https://github.com/MyStoryG/CapitalQuiz
